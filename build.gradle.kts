@@ -23,16 +23,24 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    implementation("org.springframework.data:spring-data-mongodb")
+
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+    testImplementation("org.junit.jupiter:junit-jupiter:5.4.2")
+    testImplementation("io.mockk:mockk:1.10.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.2.0")
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
+
 }
 
 tasks.withType<Test> {
