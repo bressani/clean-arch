@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 import java.util.UUID
 
 @Document(collection = "users")
-class User(
+class UserModel(
     @Id var id: String? = null,
     var uuid: UUID,
     var name: String
@@ -22,8 +22,8 @@ class User(
     }
 
     companion object {
-        fun toModel(userDomain: UserDomain): User {
-            return User(
+        fun toModel(userDomain: UserDomain): UserModel {
+            return UserModel(
                 uuid = UUID.randomUUID(),
                 name = userDomain.name
             )

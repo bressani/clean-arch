@@ -1,8 +1,8 @@
 package cleanarch.usecases.ports
 
-import cleanarch.adapters.models.User
+import cleanarch.adapters.models.UserModel
 
 interface UserRepositoryPort {
 
-    fun create(user: User): User
+    fun create(userModel: UserModel): UserModel
 }

@@ -1,6 +1,6 @@
 package cleanarch.usecases
 
-import cleanarch.adapters.models.User
+import cleanarch.adapters.models.UserModel
 import cleanarch.adapters.repositories.UserRepository
 import cleanarch.fixtures.getRegularUser
 import cleanarch.fixtures.getRegularUserDomain
@@ -31,7 +31,7 @@ class CreateUserTest {
 
     @BeforeEach
     fun setUp() {
-        every { userRepository.save(any<User>()) } returns userMock
+        every { userRepository.save(any<UserModel>()) } returns userMock
         every { userMock.toDomain() } returns
             getRegularUserDomain(
                 id = "22b9ef53",
@@ -50,6 +50,5 @@ class CreateUserTest {
 
         assertEquals("22b9ef53", createdUser.id)
         assertEquals("name2", createdUser.name)
-
     }
 }

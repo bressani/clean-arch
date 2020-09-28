@@ -1,6 +1,6 @@
 package cleanarch.usecases
 
-import cleanarch.adapters.models.User
+import cleanarch.adapters.models.UserModel
 import cleanarch.adapters.repositories.UserRepository
 import cleanarch.fixtures.getRegularUserDomain
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -31,7 +31,7 @@ class CreateUserItTest {
     fun `create user`() {
         val createdUser = createUser(getRegularUserDomain())
 
-        val userFromDb = mongoTemplate.findById(createdUser.id!!, User::class.java)
+        val userFromDb = mongoTemplate.findById(createdUser.id!!, UserModel::class.java)
 
         assertNotNull(createdUser.id)
         assertEquals("Kakaroto", createdUser.name)
