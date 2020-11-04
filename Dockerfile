@@ -8,7 +8,7 @@ RUN gradle dependencies --no-daemon
 
 COPY . .
 
-RUN gradle build --no-daemon -x test
+RUN gradle build --no-daemon
 
 FROM openjdk:11-jre-slim-sid
 

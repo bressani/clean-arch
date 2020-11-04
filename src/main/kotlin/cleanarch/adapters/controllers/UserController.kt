@@ -1,5 +1,7 @@
 package cleanarch.adapters.controllers
 
+import cleanarch.adapters.converters.DomainToDto
+import cleanarch.adapters.converters.DtoToDomain
 import cleanarch.adapters.dtos.UserDto
 import cleanarch.usecases.CreateUser
 import cleanarch.usecases.FindUser
@@ -19,16 +21,16 @@ class UserController(
 
     @PostMapping
     fun create(@RequestBody userDto: UserDto): UserDto {
-        val user = createUser(userDto.toDomain())
+        val user = createUser(DtoToDomain.convert(userDto))
 
-        return UserDto.toDto(user)
+        return DomainToDto.convert(user)
     }
 
-    @GetMapping
+    @GetMapping("/{userUuid}")
     fun find(@PathVariable userUuid: String): UserDto {
         val user = findUser(userUuid)
 
-        return UserDto.toDto(user)
+        return DomainToDto.convert(user)
     }
 
 }
