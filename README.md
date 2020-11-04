@@ -52,7 +52,9 @@ docker-compose up --build
 
 ## TODO
 - Error handling
+- More test scenarios
 - Controller tests
 - Integration tests
 - CI
 - Cache
+- Implement all CRUD operations
